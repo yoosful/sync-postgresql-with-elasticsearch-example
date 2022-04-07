@@ -29,14 +29,15 @@
 
 
 ```
+
 We are using Docker Compose to deploy the following components:
 
-* PostgreSQL
-* Kafka
-  * ZooKeeper
-  * Kafka Broker
-  * Kafka Connect with [Debezium](http://debezium.io/) and [Elasticsearch](https://github.com/confluentinc/kafka-connect-elasticsearch) Connectors
-* Elasticsearch
+- PostgreSQL
+- Kafka
+  - ZooKeeper
+  - Kafka Broker
+  - Kafka Connect with [Debezium](http://debezium.io/) and [Elasticsearch](https://github.com/confluentinc/kafka-connect-elasticsearch) Connectors
+- Elasticsearch
 
 ### Usage
 
@@ -66,7 +67,7 @@ docker-compose exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DATABASE'
 test_db=# INSERT INTO users (email) VALUES ('apple@gmail.com');
 
 # Check contents of the Elasticsearch database:
-curl http://localhost:9200/users/_search?q=id:6
+curl http://localhost:9200/users/_search?q=id:6 | jq
 ```
 
 ```json
@@ -97,7 +98,7 @@ Update user
 test_db=# UPDATE users SET email = 'tesla@gmail.com' WHERE id = 6;
 
 # Check contents of the Elasticsearch database:
-curl http://localhost:9200/users/_search?q=id:6
+curl http://localhost:9200/users/_search?q=id:6 | jq
 ```
 
 ```json
@@ -128,7 +129,7 @@ Delete user
 test_db=# DELETE FROM users WHERE id = 6;
 
 # Check contents of the Elasticsearch database:
-curl http://localhost:9200/users/_search?q=id:6
+curl http://localhost:9200/users/_search?q=id:6 | jq
 ```
 
 ```json

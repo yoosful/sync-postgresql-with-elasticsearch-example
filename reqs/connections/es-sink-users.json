@@ -5,6 +5,8 @@
     "tasks.max": "1",
     "topics": "users",
     "connection.url": "http://elasticsearch:9200",
+    "connection.username": "elastic",
+    "connection.password": "1q2w3e4r",
     "transforms": "unwrap,key",
     "transforms.unwrap.type": "io.debezium.transforms.UnwrapFromEnvelope",
     "transforms.unwrap.drop.tombstones": "false",
